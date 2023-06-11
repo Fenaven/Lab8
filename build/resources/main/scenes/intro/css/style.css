@@ -1,0 +1,9 @@
+.label {
+  -fx-text-transform: uppercase;
+}
+
+.field{
+	-fx-background-color: #000696;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-radius: 0;
+}
