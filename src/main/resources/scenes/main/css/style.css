@@ -1,0 +1,89 @@
+.backgroundPane {
+    -fx-background-image: url('../images/background.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.table-view .column-header-background {
+    -fx-border-color: black;
+    -fx-border-width: 0 0 0 1;
+}
+
+.table-view .column-header {
+    -fx-border-color: black;
+    -fx-border-width: 0 0 0 1;
+}
+
+
+.table-view .table-cell {
+    -fx-border-color: black;
+    -fx-border-width: 0 0 0 1;
+}
+
+.commandButton{
+	-fx-background-color: #00046E;
+	-fx-background-radius: 30;
+}
+
+.commandButton:hover{
+	-fx-background-color: #FF0000;
+	-fx-cursor: hand;
+}
+
+.blackTextField{
+	-fx-text-fill: white;
+}
+
+.blackTextField .text-performed{
+	-fx-strikethrough: true;
+    -fx-strikethrough-color: white;
+}
+
+.tableViewEdit .editColumn .table-cell {
+    -fx-background-color: black;
+}
+
+.buttonLink:hover{	
+	-fx-cursor: hand;
+}
+
+.menu-button .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu-button .arrow-button .arrow {
+    visibility: hidden;
+}
+
+.menu-button .arrow-button .arrow-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.buttonDelete{
+	-fx-background-color:  transparent;
+}
+
+.buttonDelete:hover{
+	-fx-background-color: #FF0000;
+	-fx-cursor: hand;
+}
+
+.choice-box-editTable .choice-box .label .text{
+    -fx-text-fill: white;
+}
+
+.choice-box-editTable .choice-box .label:pressed {
+    -fx-text-fill: black;
+}
+
+.choice-box-editTable .choice-box .arrow-button {
+    -fx-background-color: white;
+}
+
+.choice-box-editTable .choice-box .menu-item {
+    -fx-alignment: center;
+	-fx-text-fill: black;
+}

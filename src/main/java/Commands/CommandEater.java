@@ -54,6 +54,10 @@ public class CommandEater {
         return split;
     }
 
+    public static void setSplit(String[] split) {
+        CommandEater.split = split;
+    }
+
     /**
      * Command eat.
      */
@@ -104,5 +108,9 @@ public class CommandEater {
     public static void setReader(Reader reader) {
         CommandEater.reader = reader;
         loadCommands();
+    }
+
+    public static CommandPattern getCommand(String command){
+        return commandPatternHashMap.get(command);
     }
 }

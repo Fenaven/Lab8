@@ -5,39 +5,32 @@ package Classes;
  * The type Coordinates.
  */
 public class Coordinates {
-    private Long x;
-    private Long y;
+    private double x;
+    private double y;
 
     /**
      * Sets x.
      *
      * @param x the x
      */
-    public void setX(Long x) {
-        if (x == null) {
-            throw new IllegalArgumentException("Координата по x не может быть null");
-        }
-        else {
-            if (x > 357) {
+    public void setX(double x) {
+
+            if (x > 357.0) {
                 throw new IllegalArgumentException("Максимальное значение x: 357");
             } else {
                 this.x = x;
             }
         }
-    }
+
 
     /**
      * Sets y.
      *
      * @param y the y
      */
-    public void setY(Long y) {
-        if (y == null) {
-            throw new IllegalArgumentException("Координата по y не может быть null");
-        }
-        else {
+    public void setY(double y) {
             this.y = y;
-        }
+
     }
 
     @Override
@@ -51,7 +44,7 @@ public class Coordinates {
      * @param x the x
      * @param y the y
      */
-    public Coordinates(Long x, Long y) {
+    public Coordinates(double x, double y) {
         setX(x);
         setY(y);
     }
@@ -61,7 +54,7 @@ public class Coordinates {
      *
      * @return the x
      */
-    public Long getX() {
+    public double getX() {
         return x;
     }
 
@@ -70,7 +63,7 @@ public class Coordinates {
      *
      * @return the y
      */
-    public Long getY() {
+    public double getY() {
         return y;
     }
 }

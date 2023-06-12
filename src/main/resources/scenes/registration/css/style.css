@@ -1,0 +1,33 @@
+.label {
+  -fx-text-transform: uppercase;
+}
+
+.field{
+	-fx-background-color: #000696;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-radius: 0;
+}
+
+.menu-button .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu-button .arrow-button .arrow {
+    visibility: hidden;
+}
+
+.menu-button .arrow-button .arrow-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.commandButton:hover{
+	-fx-background-color: #FF0000;
+	-fx-cursor: hand;
+}
+
+.buttonLink:hover{
+	-fx-background-color: #FF0000;
+	-fx-cursor: hand;
+}

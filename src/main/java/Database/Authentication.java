@@ -69,11 +69,69 @@ public class Authentication {
             }
         }
     }
+
+    public static boolean isLogin(String login, String password) {
+        if (!isExistInDB(login)) {
+            return false;
+        } else {
+            ResultSet resultSetsalt = Connection.executePreparedStatement("SELECT salt FROM USERS WHERE login = '" + login + "'");
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-384");
+                resultSetsalt.next();
+                String salt = resultSetsalt.getString(1);
+                ResultSet resultSetHash = Connection.executePreparedStatement("SELECT hash FROM USERS WHERE login = '" + login + "'");
+                resultSetHash.next();
+                byte[] hash = md.digest(("U2i1e@!@231" + password + salt).getBytes(StandardCharsets.UTF_8));
+                if (Arrays.toString(hash).equals(resultSetHash.getString(1))) {
+                    currentUser = login;
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    public static String register(String login, String password) {
+        if (login.isBlank() || password.isBlank()) return "emptyField";
+        else if (isExistInDB(login)) {
+            return "existLogin";
+        } else {
+            String salt = saltGetter();
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-384");
+                byte[] hash = md.digest(
+                        ("U2i1e@!@231" + password + salt).getBytes(StandardCharsets.UTF_8));
+                Connection.executeStatement("INSERT INTO users (login, hash, salt) VALUES ('" + login + "', '" + Arrays.toString(hash) + "', '" + salt + "')");
+                currentUser = login;
+                return "";
+            } catch (NoSuchAlgorithmException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+        return "";
+    }
     private static String saltGetter() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 20; i++) {
             stringBuilder.append((char) new Random().nextInt(40, 120));
         }
         return stringBuilder.toString();
+    }
+
+    public static boolean isExistInDB(String login){
+        ResultSet rs = Connection.executePreparedStatement("SELECT * FROM users  WHERE login = '" + login + "'");
+        if(rs == null) return false;
+        try {
+            return rs.next();
+        } catch (SQLException e) {
+            System.err.println("Ошибка выполнения запроса: " + e.getMessage());
+            return false;
+        }
     }
 }

@@ -46,18 +46,16 @@ public class HumanBeingCollection {
                 try {
                     long id = resultSet.getLong(1);
                     String name = resultSet.getString(2);
-                    long x = resultSet.getLong(3);
-                    long y = resultSet.getLong(4);
+                    double x = resultSet.getDouble(3);
+                    double y = resultSet.getDouble(4);
                     Date date = resultSet.getDate(5);
                     boolean realHero = resultSet.getBoolean(6);
                     boolean hasToothpick = resultSet.getBoolean(7);
                     int impactSpeed = resultSet.getInt(8);
                     String weaponTypeString = resultSet.getString(9);
-                    WeaponType weaponType = null;
-                    if (!weaponTypeString.equals("null")) weaponType = WeaponType.valueOf(weaponTypeString);
-                    else weaponType = WeaponType.PISTOL;
+                    WeaponType weaponType = WeaponType.getWeaponType(weaponTypeString.toLowerCase());
                     String moodString = resultSet.getString(10);
-                    Mood mood = Mood.valueOf(moodString);
+                    Mood mood = Mood.getMood(moodString.toLowerCase());
                     if (moodString.equals("null")) throw new IllegalArgumentException();
                     boolean cool = resultSet.getBoolean(11);
                     String user = resultSet.getString(12);
@@ -80,4 +78,5 @@ public class HumanBeingCollection {
         addToDB(humanBeing);
         updateFromDB();
     }
+
 }

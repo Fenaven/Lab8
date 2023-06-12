@@ -2,11 +2,20 @@ package Classes;
 
 import Database.Authentication;
 import Database.Connection;
+import validators.fields.CoordinatesValidator;
+import validators.fields.ImpactSpeedValidator;
+import validators.fields.NameValidator;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * The type Human being.
@@ -23,6 +32,33 @@ public class HumanBeing {
     private Mood mood;
     private Car car;
     private String user;
+
+    private final Map<Fields, Predicate<String>> notNullSetters = new LinkedHashMap<>(); // Все сеттеры, устанавливающие поля, которые не должны быть null
+    private final Map<Fields, Consumer<String>> setters = new LinkedHashMap<>(); // Все сеттеры, устанавливающие поля, которые могут быть null
+
+
+    {
+        addNotNullSetter(Fields.NAME, this::isSetName);
+        addNotNullSetter(Fields.COORDINATES, this::isSetCoordinates);
+        addNotNullSetter(Fields.IMPACTSPEED, this::isSetImpactSpeed);
+        addSetter(Fields.REALHERO, this::setRealHero);
+        addSetter(Fields.HASTOOTHPICK, this::setHasToothpick);
+        addSetter(Fields.WEAPONTYPE, this::setWeaponType);
+        addSetter(Fields.MOOD, this::setMood);
+        addSetter(Fields.CARCOOL, this::setCar);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Map<Fields, Predicate<String>> getNotNullSetters() {
+        return notNullSetters;
+    }
+
+    public Map<Fields, Consumer<String>> getSetters() {
+        return setters;
+    }
 
     public Date getCreationDate() {
         return creationDate;
@@ -41,6 +77,11 @@ public class HumanBeing {
         return id;
     }
 
+    public HumanBeing(){
+        this.creationDate = new Date();
+        this.user = Authentication.getCurrentUser();
+    }
+
     /**
      * Sets name.
      *
@@ -54,6 +95,8 @@ public class HumanBeing {
             this.name = name;
         }
     }
+
+
 
     /**
      * Sets coordinates.
@@ -83,6 +126,28 @@ public class HumanBeing {
         }
     }
 
+    public void setRealHero(String realHero) {
+        if(realHero.equals("1")) this.realHero = true;
+        else this.realHero = Boolean.parseBoolean(realHero);
+    }
+
+    public void setHasToothpick(String hasToothpick) {
+        if(hasToothpick.equals("1")) this.hasToothpick = true;
+        else this.hasToothpick = Boolean.parseBoolean(hasToothpick);
+    }
+
+    public void setMood(String mood) {
+        this.mood = Mood.getMood(mood);
+    }
+    public void setWeaponType(String weaponType) {
+        this.weaponType = WeaponType.getWeaponType(weaponType);
+    }
+
+
+    public void setCar(String isCarCool) {
+        boolean coolCar = Boolean.parseBoolean(isCarCool);
+        this.car = new Car(coolCar);
+    }
     /**
      * Sets has toothpick.
      *
@@ -317,28 +382,6 @@ public class HumanBeing {
     }
 
     /**
-     * The type Sort by x coordinate.
-     */
-    public static class SortByX_Coordinate implements Comparator {
-        @Override
-        public int compare(Object o1, Object o2) {
-            HumanBeing humanBeingOne = (HumanBeing) o1;
-            HumanBeing humanBeingTwo = (HumanBeing) o2;
-            return humanBeingOne.getCoordinates().getX().compareTo(humanBeingTwo.getCoordinates().getX());
-        }
-    }
-
-    /**
-     * The type Sort by y coordinate.
-     */
-    public static class SortByY_Coordinate implements Comparator {
-        @Override
-        public int compare(Object o1, Object o2) {
-            HumanBeing humanBeingOne = (HumanBeing) o1;
-            HumanBeing humanBeingTwo = (HumanBeing) o2;
-            return humanBeingOne.getCoordinates().getY().compareTo(humanBeingTwo.getCoordinates().getY());
-        }
-    }
 
     /**
      * The type Sort by real hero.
@@ -362,6 +405,41 @@ public class HumanBeing {
             HumanBeing humanBeingTwo = (HumanBeing) o2;
             return humanBeingOne.getHasToothpick().compareTo(humanBeingTwo.getHasToothpick());
         }
+    }
+
+    public boolean isSetCoordinates(String coordinates){
+        String[] coords = coordinates.split(",");
+        CoordinatesValidator coordinatesValidator = new CoordinatesValidator(coords);
+        if(coordinatesValidator.isValid()){
+            Long x = Long.parseLong(coords[0]);
+            Long y = Long.parseLong(coords[1]);
+            setCoordinates(new Coordinates(x,y));
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isSetName(String name){
+        NameValidator nameValidator = new NameValidator(name);
+        if(nameValidator.isValid()){
+            setName(name);
+            return true;
+        }
+        return false;
+    }
+    public boolean isSetImpactSpeed(String impactSpeed){
+        if(impactSpeed.equals("")) {
+            setImpactSpeed(null);
+            return true;
+        }
+        else{
+            ImpactSpeedValidator impactSpeedValidator = new ImpactSpeedValidator(impactSpeed);
+            if(impactSpeedValidator.isValid()){
+                setImpactSpeed(Integer.parseInt(impactSpeed));
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -411,4 +489,18 @@ public class HumanBeing {
             return humanBeingOne.getCar().getCool().compareTo(humanBeingTwo.getCar().getCool());
         }
     }
+    public void addNotNullSetter(Fields field, Predicate<String> predicate){
+        notNullSetters.put(field, predicate);
+    }
+
+    /**
+     * Add setter.
+     *
+     * @param field    the field
+     * @param consumer the consumer
+     */
+    public void addSetter(Fields field, Consumer<String> consumer){
+        setters.put(field, consumer);
+    }
+
 }

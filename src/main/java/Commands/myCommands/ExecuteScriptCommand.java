@@ -28,7 +28,7 @@ public class ExecuteScriptCommand implements CommandPattern {
                 if (countRecursion < COUNT_RECURSION_MAX) {
                     countRecursion++;
                     String FILE_PATH = CommandEater.getSplit()[1];
-                    Reader reader = new ReaderManager(new ReaderFromFile(FILE_PATH), NameOfReader.FILEREADER);
+                    Reader reader = new ReaderFromFile(FILE_PATH);
                     CommandEater.setReader(reader);
                     CommandEater.commandEat();
                 }

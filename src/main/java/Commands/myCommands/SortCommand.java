@@ -36,12 +36,6 @@ public class SortCommand implements CommandPattern {
                     if (parameter.equals(2)) {
                         HumanBeingCollection.getHumanBeings().stream().sorted(new HumanBeing.SortByName()).forEach(System.out::println);
                     }
-                    if (parameter.equals(3)) {
-                        HumanBeingCollection.getHumanBeings().stream().sorted(new HumanBeing.SortByX_Coordinate()).forEach(System.out::println);
-                    }
-                    if (parameter.equals(4)) {
-                        HumanBeingCollection.getHumanBeings().stream().sorted(new HumanBeing.SortByY_Coordinate()).forEach(System.out::println);
-                    }
                     if (parameter.equals(5)) {
                         HumanBeingCollection.getHumanBeings().stream().sorted(new HumanBeing.SortByRealHero()).forEach(System.out::println);
                     }

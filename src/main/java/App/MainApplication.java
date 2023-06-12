@@ -7,10 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class MainApplication extends Application {
+
+    private static boolean animate = false;
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/scenes/intro/intro1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/scenes/login/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("HumanBeingApplication");
         stage.setScene(scene);
@@ -21,5 +25,13 @@ public class MainApplication extends Application {
 
     public static void open() {
         launch();
+    }
+
+    public static boolean isAnimate() {
+        return animate;
+    }
+
+    public static void setAnimate(boolean animate) {
+        MainApplication.animate = animate;
     }
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="456.0" style="-fx-background-color: #00046E;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Controllers.AddElementController">
+   <children>
+      <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="243.0" layoutY="570.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: transparent;" styleClass="buttonLink" stylesheets="@css/style.css" text="Back" textAlignment="CENTER" textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="nameField" layoutX="202.0" layoutY="45.0" prefHeight="53.0" prefWidth="254.0" style="-fx-background-radius: 0; -fx-border-width: 0 0 3 0; -fx-border-color: #000000;" />
+      <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="45.0" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Name" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="createObject" alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="456.0" style="-fx-background-color: #000000;" text="NEW HUMAN BEING" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="coordinateXField" layoutX="202.0" layoutY="99.0" prefHeight="53.0" prefWidth="254.0" style="-fx-background-radius: 0; -fx-border-width: 0 0 3 0; -fx-border-color: #000000;" />
+      <Label fx:id="coordinateXLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="99.0" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Coordinate x" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="coordinateYField" layoutX="202.0" layoutY="153.0" prefHeight="53.0" prefWidth="254.0" style="-fx-background-radius: 0; -fx-border-width: 0 0 3 0; -fx-border-color: #000000;" />
+      <Label fx:id="coordinateYLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="153.0" prefHeight="54.0" prefWidth="203.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Coordinate y" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="realHeroChoice" layoutX="202.0" layoutY="206.0" prefHeight="54.0" prefWidth="254.0" stylesheets="@css/style.css" />
+      <ChoiceBox fx:id="hasToothPickChoice" layoutX="202.0" layoutY="260.0" prefHeight="55.0" prefWidth="254.0" stylesheets="@css/style.css" />
+      <TextField fx:id="impactSpeedField" layoutX="202.0" layoutY="315.0" prefHeight="53.0" prefWidth="254.0" style="-fx-background-radius: 0; -fx-border-width: 0 0 3 0; -fx-border-color: #000000;" />
+      <Label fx:id="impactSpeedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="315.0" prefHeight="54.0" prefWidth="204.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Impact speed" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="weaponTypeChoice" layoutX="202.0" layoutY="369.0" prefHeight="53.0" prefWidth="254.0" />
+      <ChoiceBox fx:id="moodChoice" layoutX="202.0" layoutY="423.0" prefHeight="55.0" prefWidth="254.0" />
+      <Label fx:id="realHeroLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="206.0" prefHeight="54.0" prefWidth="203.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Real hero" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="hasToothPickLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="261.0" prefHeight="54.0" prefWidth="204.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Has Tooth pick" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="carCoolLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="477.0" prefHeight="54.0" prefWidth="204.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 0 0; -fx-border-color: #000000;" text="Car cool" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="carChoice" layoutX="203.0" layoutY="478.0" prefHeight="52.0" prefWidth="254.0" style="-fx-border-width: 0 0 0 0;" />
+      <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="570.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: transparent;" styleClass="buttonLink" stylesheets="@css/style.css" text="Add" textAlignment="CENTER" textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="moodLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="422.0" prefHeight="55.0" prefWidth="204.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Mood" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponTypeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="368.0" prefHeight="54.0" prefWidth="204.0" style="-fx-background-color: #00D1FF; -fx-border-width: 0 3 3 0; -fx-border-color: #000000;" text="Weapon Type" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Text fx:id="errorText" fill="RED" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="454.1367645263672">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

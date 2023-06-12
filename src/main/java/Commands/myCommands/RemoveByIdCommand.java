@@ -8,6 +8,9 @@ import Commands.CommandPattern;
 import Database.Authentication;
 import Database.Connection;
 import myUtilities.allForReaders.Reader;
+import validators.Errors;
+import validators.commands.RemoveElementValidator;
+import validators.fields.HumanForUserValidator;
 
 /**
  * The type Remove by id command.
@@ -57,5 +60,20 @@ public class RemoveByIdCommand implements CommandPattern {
                 }
             }
         }
+    }
+    public Errors isExecute(String argument){
+        RemoveElementValidator removeElementValidator = new RemoveElementValidator(argument);
+        Errors error = removeElementValidator.validateAll();
+        if(error == Errors.NOTHAVEERRORS){
+            Long id = Long.parseLong(argument);
+            HumanBeing human = HumanBeingCollection.getHumanBeings().stream().filter(humanBeing -> humanBeing.getId() == id).toList().get(0);
+            HumanForUserValidator hsev = new HumanForUserValidator(human);
+            error = hsev.validateAll();
+            if(error == Errors.NOTHAVEERRORS){
+                Connection.executeStatement("delete from human_beings where id = '" + human.getId() + "'");
+                    HumanBeingCollection.getHumanBeings().remove(human);
+                }
+            }
+        return error;
     }
 }

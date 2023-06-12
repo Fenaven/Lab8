@@ -1,0 +1,14 @@
+.buttonLink:hover{
+	-fx-cursor: hand;
+}
+
+.choice-box .context-menu {
+    -fx-pref-width: 250; /* Ширина выпадающего списка */
+}
+
+.choice-box{
+	-fx-background-color: white;
+	-fx-background-radius: 0;
+	-fx-border-width: 0 0 3 0;
+	-fx-border-color:  #000000;
+}
