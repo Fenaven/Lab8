@@ -1,5 +1,6 @@
 package Commands;
 
+import Classes.HumanBeing;
 import Commands.myCommands.*;
 import myUtilities.allForReaders.Reader;
 import myUtilities.allForReaders.ReaderFromConsole;
@@ -11,6 +12,7 @@ import java.util.Map;
  * The type Command eater.
  */
 public class CommandEater {
+
     private static Boolean isProgramRunning = true;
     /**
      * The Split.
@@ -90,7 +92,6 @@ public class CommandEater {
         commandPatternHashMap.put("add", new AddCommand(reader));
         commandPatternHashMap.put("remove_by_id", new RemoveByIdCommand(reader));
         commandPatternHashMap.put("clear", new ClearCommand());
-        commandPatternHashMap.put("update", new UpdateCommand());
         commandPatternHashMap.put("sort", new SortCommand());
         commandPatternHashMap.put("info", new InfoCommand());
         commandPatternHashMap.put("insert_at", new InsertAtCommand(reader));

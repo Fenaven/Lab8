@@ -232,7 +232,7 @@
             <Font name="Roboto Black" size="70.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="introPane" prefHeight="648.0" prefWidth="1080.0" visible="false">
+      <AnchorPane fx:id="introPane" prefHeight="648.0" prefWidth="1080.0">
          <children>
             <AnchorPane fx:id="leftPane" prefHeight="648.0" prefWidth="540.0">
                <children>

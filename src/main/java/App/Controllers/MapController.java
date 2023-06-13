@@ -42,8 +42,8 @@
         private Label coordinateLabel;
         @FXML
         private Button closeMapButton;
-        private static final float SCREEN_WIDTH = 1080;
-        private static final Integer SCREEN_HEIGHT = 648;
+        private static final double SCREEN_WIDTH = 1080;
+        private static final double SCREEN_HEIGHT = 648;
         private Group selectedObject = null;
         private double originalScaleX = 1;
         private double originalScaleY = 1;
@@ -158,28 +158,25 @@
         }
 
         private double normalizeX(double x){
-            float minValue = -Float.MAX_VALUE;
-            float maxValue = 357;
+            double minValue = -Float.MAX_VALUE;;
+            double maxValue = 357;
             return ((x - minValue) / (maxValue - minValue)) * SCREEN_WIDTH;
         }
         private double normalizeY(double y){
             double minValue = Integer.MIN_VALUE;
             double maxValue = Integer.MAX_VALUE;
-            double res =  (y - minValue) /   (maxValue - minValue);
-            return res*SCREEN_HEIGHT;
+            return  ((y - minValue) /   (maxValue - minValue)) * SCREEN_HEIGHT;
         }
         private double denormalizeX(double normalizedX) {
             float minValue = -Float.MAX_VALUE;
             float maxValue = 357;
-            double denormalizedX = normalizedX / SCREEN_WIDTH * (maxValue - minValue) + minValue;
-            return denormalizedX;
+            return normalizedX / SCREEN_WIDTH * (maxValue - minValue) + minValue;
         }
 
         private double denormalizeY(double normalizedY) {
             double minValue = Integer.MIN_VALUE;
             double maxValue = Integer.MAX_VALUE;
-            double denormalizedY = normalizedY / SCREEN_HEIGHT * (maxValue - minValue) + minValue;
-            return denormalizedY;
+            return normalizedY / SCREEN_HEIGHT * (maxValue - minValue) + minValue;
         }
 
         private Group drawPeople(Color color){
